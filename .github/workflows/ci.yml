@@ -27,4 +27,7 @@ jobs:
         echo "The string is: ${{ steps.my_string.outputs.content }}"
         echo "We are here"
         echo $JAVA_HOME
+        set SIEBEL_HOME=/opt/home
+        echo $SIEBEL_HOME
+        df -kh
 
