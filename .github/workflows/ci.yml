@@ -25,4 +25,4 @@ jobs:
     - name: Get Env Variables
       run: |
       chmod +x gradlew
-      echo "We are here"
+      ./gradlew build
