@@ -24,7 +24,7 @@ jobs:
         cache: gradle
     - name: display string
       env:
-        SIEBEL_HOME=/opt/home
+        SIEBEL_HOME: /opt/home
       run: |
         echo "The string is: ${{ steps.my_string.outputs.content }}"
         echo "We are here"
