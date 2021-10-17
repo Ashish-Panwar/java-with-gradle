@@ -31,5 +31,6 @@ jobs:
         echo $JAVA_HOME
         hostname
         echo $SIEBEL_HOME
+        
         df -kh
 
