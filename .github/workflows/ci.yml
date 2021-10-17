@@ -30,7 +30,7 @@ jobs:
         echo "We are here"
         echo $JAVA_HOME
         hostname
-        echo $SIEBEL_HOME
         
+        echo $SIEBEL_HOME
         df -kh
 
