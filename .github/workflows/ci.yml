@@ -11,8 +11,7 @@ on:
     branches: [ main ]
     
     
-    
-
+  
 jobs:
   build:
     name: Setting Env Variables
