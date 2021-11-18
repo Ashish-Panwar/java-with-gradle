@@ -30,4 +30,4 @@ jobs:
        cd ./build/docs/
        ls -lart
        
-       curl -uyash.panwar1306@gmail.com:APAtggvrp79rS3GDJyBubDf3YKf -T ./build/docs/ "https://ashishpanwar.jfrog.io/artifactory/default-generic-local/packages"
+       curl -uyash.panwar1306@gmail.com:APAtggvrp79rS3GDJyBubDf3YKf -T ${GITHUB_WORKSPACE}/build/docs/ "https://ashishpanwar.jfrog.io/artifactory/default-generic-local/packages"
