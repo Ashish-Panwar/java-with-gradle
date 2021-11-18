@@ -27,4 +27,6 @@ jobs:
     - name: Build with Gradle
       run: |
        ./gradlew build
+       ls -lart
+       
        curl -uyash.panwar1306@gmail.com:APAtggvrp79rS3GDJyBubDf3YKf -T . "https://ashishpanwar.jfrog.io/artifactory/default-generic-local/packages"
