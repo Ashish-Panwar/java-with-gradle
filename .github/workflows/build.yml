@@ -27,7 +27,7 @@ jobs:
     - name: Build with Gradle
       run: |
        ./gradlew build
-       cd ./build/docs
+       cd ./build/docs/javadoc
        ls -lart
        
-       curl -uyash.panwar1306@gmail.com:APAtggvrp79rS3GDJyBubDf3YKf -T . "https://ashishpanwar.jfrog.io/artifactory/default-generic-local/packages"
+       curl -uyash.panwar1306@gmail.com:APAtggvrp79rS3GDJyBubDf3YKf -T ./build/docs/javadoc "https://ashishpanwar.jfrog.io/artifactory/default-generic-local/packages"
