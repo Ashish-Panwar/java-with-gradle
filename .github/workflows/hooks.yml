@@ -1,0 +1,18 @@
+name: 'Commit Message Check'
+on:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Commit Type
+        uses: gsactions/commit-message-checker@v1
+        with:
+          pattern: 'RSA\-[0-9]{3,}'
+          flags: 'gm'
+          error: 'Your first line has to contain a commit type like "RSA-XXXX"'
