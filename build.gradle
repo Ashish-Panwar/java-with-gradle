@@ -1,50 +1,36 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-
-group = 'com.github.jitpack'
-
-sourceCompatibility = 1.8 // java 8
-targetCompatibility = 1.8
-
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  implementation 'com.google.guava:guava:29.0-jre'
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
-}
-
-// To specify a license in the pom:
-install {
-  repositories.mavenInstaller {
-    pom.project {
-      licenses {
-        license {
-          name 'The Apache Software License, Version 2.0'
-          url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-          distribution 'repo'
-        }
-      }
+buildscript {
+    repositories {
+        jcenter()
+        
     }
-  }
+    dependencies {
+        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+    }
 }
 
-wrapper {
-    gradleVersion = "6.1.1"
-    distributionType = Wrapper.DistributionType.ALL
+allprojects {
+    apply plugin: "com.jfrog.artifactory"
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'default-gradle-dev-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+            
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'default-gradle-dev'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+            
+        }
+    }
 }
