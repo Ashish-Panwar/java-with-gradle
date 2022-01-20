@@ -23,6 +23,6 @@ jobs:
       cat ${GITHUB_EVENT_PATH}
       pull_number=`cat ${GITHUB_EVENT_PATH} | jq '. | {number}' | grep number  | cut -d':' -f2 |sed 's/^ *//g'`
       echo "Pull Number : ${pull_number}"
-      url=https://api.github.com/repos/Ashish-Panwar/java-with-gradle/${pull_number}/commits
+      url=https://api.github.com/repos/Ashish-Panwar/java-with-gradle/pulls/${pull_number}/commits
       echo "URL: $url"
       curl --user ASHIPANW:${{secrets.REPO_TOKEN}}  -X GET "$url" | jq '.[] | .commit["message"]'
